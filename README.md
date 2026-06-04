@@ -149,6 +149,6 @@ Pre-run outputs are in /outputs so you can review result without running the not
 ## Dataset Citation
  
 Microsoft. Hospital Length of Stay Dataset.
-https://microsoft.github.io/r-server-hospital-length-of-stay/input_data.html
+[https://microsoft.github.io/r-server-hospital-length-of-stay/input_data.html](https://www.kaggle.com/datasets/aayushchou/hospital-length-of-stay-dataset-microsoft?resource=download)
 Available via Kaggle.
  
