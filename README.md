@@ -1,5 +1,5 @@
 # Hospital Length of Stay — EDA and Descriptive Analysis
-Descriptive analysis of 100,000 hospital encounter records. Python, pandas, scipy. Exploratory workflow, data validation, and statistical framing without ML.
+Analysis of 100,000 hospital encounter records. Python, pandas, scipy, etc. Exploratory workflow, data validation, and statistical framing.
  
 **Dataset:** Microsoft Hospital LOS (Kaggle), 100,000 synthetic encounter records, 28 columns, 2012.
  
@@ -7,18 +7,16 @@ Descriptive analysis of 100,000 hospital encounter records. Python, pandas, scip
  
 **Tools:** Python (pandas, matplotlib, seaborn, scipy)
  
-**Type:** Descriptive analytics only. No machine learning,
-no prediction.
+**Type:** Descriptive analytics only. No ml/prediction.
  
-**Unit of analysis:** Encounters, not patients. No patient
-identifier exists in this dataset.
+**Unit of analysis:** Encounters. No patient identifier exists in this dataset.
 
 -------
 
 ## Business Questions
 1. How is length of stay distributed across encounters?
-2. Which clinical characteristics are associated with longer stays?
-3. Is there facility-level variation in length of stay?
+2. Which clinical conditions are associated with longer stays?
+3. Is there facility level variation in length of stay?
 
 -------
  
@@ -26,9 +24,8 @@ identifier exists in this dataset.
  
 **Length of Stay**
 - Mean and median both 4.0 days. Std dev 2.4 days.
-- Distribution is right-skewed: 46.9% of encounters resolve
-  within 3 days; 8.6% exceed 7 days.
-- Range: 1 to 17 days. No outliers removed, long stays are clinically valid complex encounters confirmed by date arithmetic.
+- Distribution is right-skewed: 46.9% of encounters resolved within 3 days, 8.6% exceed 7 days.
+- Range: 1 to 17 days. No outliers removed as long stays are clinically valid encounters validated through date arithmetic cross check.
  
 **Condition Burden**
 - 57.3% of encounters have zero flagged comorbidities.
@@ -37,8 +34,8 @@ identifier exists in this dataset.
 - Most prevalent comorbidity: psychologicaldisordermajor (23.9% of encounters).
  
 **Facility Variation**
-- Mean LOS ranges from 3.27 days (Facilities A and B) to 5.16 days (Facility E), a 58% difference.
-- Variation may reflect patient mix. No case-mix adjustment applied. Not described as a performance   gap.
+- Mean LOS ranges from 3.27 days (Facilities A and B) to 5.16 days (Facility E), a 58% difference. Facilities C and D sit in the middle at 4.89 and 4.83 days respectively.
+- Variation may reflect patient mix. No case mix adjustment applied. Not described as a performance gap.
  
 -------
  
@@ -46,19 +43,19 @@ identifier exists in this dataset.
  
 These are exclusions with explicit reasons:
  
-- **No complexity/risk score:** any weighting would be arbitrary and indefensible. num_conditions is used instead — transparent, one-sentence explanation.
+- **No complexity/risk score:** any weighting would be arbitrary and indefensible. num_conditions is used instead.
 - **No cost estimate:** the dataset has no charge or payer data. Any figure would be LOS multiplied by a made-up rate.
-- **No readmission rate:** no patient identifier exists to link encounters to the same individual.
-- **No ML/prediction:** this dataset is commonly used for regression tutorials. The descriptive version is rarer and demonstrates exploratory workflow before        modelling.
+- **No readmission rate caculated:** no patient identifier exists to link encounters to the same individual. Microsoft's definition of recount is readmissions within 180 days during data generation but no linkage is provided. Therefore, it can not be independently verified or calculated.
+- **No ML/prediction:** this dataset is commonly used for regression tutorials. The descriptive version rather demonstrates solid exploratory workflow before modelling.
 - **No outlier removal:** stays of 10-17 days are clinically plausible. Date arithmetic confirmed all values are internally consistent.
  
 -------
  
 ## rcount Definition
  
-rcount is defined as readmissions within 180 days per Microsoft's data dictionary. It is used here as an indicator only. The data is synthetic,  it is not a verified clinical metric.
+rcount is defined as readmissions within 180 days per Microsoft. It is used here as an indicator only. The data is synthetic,  it is not a verified clinical metric.
  
-Values of '5+' are encoded as 5 (top-coded). rcount = 5
+Values of '5+' are encoded as 5. rcount = 5
 represents '5 or more prior admissions', not exactly 5.
  
 -------
@@ -74,7 +71,7 @@ represents '5 or more prior admissions', not exactly 5.
 | num_conditions   | Analytical     | Sum of 11 binary comorbidity flags 
 | burden_group     | Display helper | pd.cut() bands of num_conditions for charts 
  
-Note: los_calculated was created on a validation copy (df_check) only. It confirmed lengthofstay matches date arithmetic and was discarded — it is not a project column.
+Note: los_calculated was created on a validation copy (df_check) only. It confirmed lengthofstay matches date arithmetic and was discarded (it is not a project column).
  
 -------
  
