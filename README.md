@@ -40,7 +40,7 @@ Analysis of 100,000 hospital encounter records. Python, pandas, scipy, etc. Expl
  
 **Facility Variation**
 - Mean LOS ranges from 3.27 days (Facilities A and B) to 5.16 days (Facility E), a 58% difference. Facilities C and D are 4.89 and 4.83 days respectively.
-- Variation reflect patient mix. No case mix adjustment applied. Not described as a performance gap.
+- Variation liekly reflects patient mix. No case mix adjustment applied. Not described as a performance gap.
 
 ![Facility Comparison](charts/chart2_facility_comparison.png)
  
@@ -50,10 +50,10 @@ Analysis of 100,000 hospital encounter records. Python, pandas, scipy, etc. Expl
  
 These are exclusions with explicit reasons:
  
-- **No complexity/risk score:** any weighting would be arbitrary and indefensible. num_conditions is used instead.
+- **No complexity/risk score:** any weighting would be arbitrary and indefensible without domain knowledge. num_conditions is used instead.
 - **No cost estimate:** the dataset has no charge or payer data. Any figure would be LOS multiplied by a made-up rate.
-- **No readmission rate caculated:** no patient identifier exists to link encounters to the same individual. Microsoft's definition of recount is readmissions within 180 days during data generation but no linkage is provided. Therefore, it can not be independently verified or calculated.
-- **No ML/prediction:** this dataset is commonly used for regression tutorials. The descriptive version rather demonstrates solid exploratory workflow before modelling.
+- **No readmission rate calculated:** no patient identifier exists to link encounters to the same individual. Microsoft's definition of rcount is readmissions within 180 days during data generation but no linkage is provided. Therefore, it can not be independently verified or calculated.
+- **Descriptive scope only:** this dataset is commonly used for regression tutorials. A descriptive-only approach demonstrates a solid exploratory workflow and is the less common path on this dataset.
 - **No outlier removal:** stays of 10-17 days are clinically plausible. Date arithmetic confirmed all values are internally consistent.
  
 -------
@@ -109,7 +109,7 @@ with effect size.
  
 ## How to Run
  
-1. Download the dataset from Kaggle: https://www.kaggle.com/datasets/[dataset-url]
+1. Download the dataset from Kaggle: (https://www.kaggle.com/datasets/aayushchou/hospital-length-of-stay-dataset-microsoft?resource=download)
    Save it as: data/Length_of_Stay_Database.csv
  
 2. Install dependencies:
