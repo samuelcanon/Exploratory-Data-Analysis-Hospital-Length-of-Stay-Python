@@ -69,7 +69,7 @@ represents '5 or more prior admissions', not exactly 5.
  
 ## Derived Columns
  
-3 analytical + 1 display helper = 4 total.
+4 Derived Columns (3 analytical, 1 display based)
  
 | Column           | Type           | Description                                 |
 |------------------|----------------|---------------------------------------------|
